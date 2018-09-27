@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { UsuarioService } from './servicios/usuario/usuario.service';
+import { HttpClientModule } from '@angular/common/http';
+
+
 import { AppComponent } from './app.component';
 import { EstudiantesComponent } from './usuarios/estudiantes/estudiantes.component';
 import { DocentesComponent } from './usuarios/docentes/docentes.component';
@@ -47,9 +52,12 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
