@@ -1,3 +1,16 @@
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-body">
+				<input #input type="text" class="form-control" placeholder="Buscar usuario">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
 <div class="container">
 	<!-- Button trigger modal -->
 		<button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#exampleModal">
@@ -48,64 +61,52 @@
 		    </div>
 		  </div>
 		</div>
-
 	<div class="row col-12 mt-3 justify-content-around">
-	
-		
-	
 
-					<!-- <div class=" col-md-6">
-						
-						<form>
-						  <div class="form-group">
-						    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
-						  </div>
-						  <div class="form-group">
-						    <input type="text" class="form-control" id="apellido" placeholder="Apellido">
-						  </div>
-						  <div class="form-group">
-					      <input type="text" class="form-control" id="ru" placeholder="R.U.">
-					    </div>
-						  <div class="form-group">
-					      <input type="text" class="form-control" id="usuario" placeholder="Usuario">
-					    </div>
-						  <div class="form-group">
-					      <input type="password" class="form-control" id="contraseña" placeholder="Contraseña">
-					    </div>
-					    <div class="form-group">
-					      <label for="rol">Rol</label>
-					      <select id="rol" class="form-control">
-					        <option selected>Estudiante</option>
-					        <option>Docente</option>
-					      </select>
-					    </div>
-					    <button type="submit" class="btn btn-primary">Registar</button>
-						</form>
-					</div> -->
-<div class="col-9">
-	<table class="table table-bordered">
+<div class="col-12">
+	<h3 class="card-title"> Usuarios registrados</h3>
+	<table class="table table-hover">
 		  <thead>
 		    <tr>
-		      <th scope="col">N°</th>
-		      <th scope="col">Nombre</th>
-		      <th scope="col">Apellido</th>
-		      <th scope="col">Usuario</th>
-		      <th scope="col">Contraseña</th>
+		      <th>N°</th>
+		      <th>Nombre</th>
+		      <th>Apellido</th>
+		      <th>R.U.</th>
+		      <th>Usuario</th>
+		      <th>Contraseña</th>
+		      <th>Rol</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr>
-		      <th scope="row">1</th>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td>
+		    <tr *ngFor="let usuario of usuarios">
+		    <td>
+		    	{{totalRegistros}}
+		    </td>
+		    <td>
+		    	{{usuario.nombre}}
+		    </td>
+		     <td>
+		    	{{usuario.apellido}}
+		    </td>
+		     <td>
+		    	{{usuario.ru}}
+		    </td>
+		     <td>
+		    	{{usuario.user}}
+		    </td>
+		     <td>
+		    	{{usuario.password}}
+		    </td>
+		     <td>
+		    	{{usuario.rol}}
+		    </td>	
+		   
+		    <td>
+		    	<button class="btn btn-primary"> <i class="fa fa-save"></i></button>
+		    	<button (click)="borrarUsuario(usuario)"class="btn btn-danger"> <i class="fa fa-trash-o"></i></button>
+		    </td>
 		    </tr>
-		    <tr>
-		      <th scope="row">2</th>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		    </tr>
+		  
 		  </tbody>
 </table>
 </div>

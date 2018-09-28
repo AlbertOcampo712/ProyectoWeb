@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsuarioService } from '../servicios/usuario/usuario.service';
 import { Usuario } from '../models/usuario.model';
 
-import * as swal from 'sweetalert'; 
+import * as swal from 'sweetalert';
 
 
 @Component({
@@ -13,6 +13,9 @@ import * as swal from 'sweetalert';
 })
 export class RegistroComponent implements OnInit {
 
+  usuarios: Usuario[] = [];
+  totalRegistros: number = 0;
+  desde: number = 0;
 	forma: FormGroup;
   constructor(public _usuarioService: UsuarioService) { }
 
@@ -36,7 +39,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
       // init_plugins();
-
+        this.cargarUsuarios();
   	this.forma = new FormGroup({
   		nombre: new FormControl(null, Validators.required),
   		apellido: new FormControl(null, Validators.required),
@@ -68,5 +71,22 @@ registrarUsuario(){
    });
 }
 
+
+cargarUsuarios(){
+    this._usuarioService.cargarUsuarios( this.desde )
+    .subscribe( (resp: any) =>{
+        this.totalRegistros = resp.total;
+        this.usuarios = resp.usuarios;
+    });
+}
+
+borrarUsuario(usuario: Usuario){
+  console.log(usuario);
+  this._usuarioService.borrarUsuario(usuario._id)
+  .subscribe(resp => {
+     console.log(resp);
+     this.cargarUsuarios();
+  });
+}
 
 }
