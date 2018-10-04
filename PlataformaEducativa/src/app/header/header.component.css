@@ -1,0 +1,6 @@
+.btn btn-info {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+    position: fixed;
+}

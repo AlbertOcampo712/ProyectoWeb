@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+body {
+
+scrollbar-face-color: #6685CA;
+
+scrollbar-highlight-color: #6685CA;
+
+scrollbar-shadow-color: #6685CA;
+
+scrollbar-3dlight-color:#FFFFFF;
+
+scrollbar-arrow-color:#FFFFFF;
+
+scrollbar-track-color:#E5E5E5;
+
+scrollbar-drakshadow-color:#000000;
+
+}

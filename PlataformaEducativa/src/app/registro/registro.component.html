@@ -1,3 +1,4 @@
+<div class="container mt-3">
 <div class="row">
 	<div class="col-12">
 		<div class="card">
@@ -7,7 +8,7 @@
 		</div>
 	</div>
 </div>
-
+</div>
 
 
 
@@ -73,7 +74,6 @@
 		      <th>Apellido</th>
 		      <th>R.U.</th>
 		      <th>Usuario</th>
-		      <th>Contraseña</th>
 		      <th>Rol</th>
 		    </tr>
 		  </thead>
@@ -95,15 +95,12 @@
 		    	{{usuario.user}}
 		    </td>
 		     <td>
-		    	{{usuario.password}}
-		    </td>
-		     <td>
 		    	{{usuario.rol}}
 		    </td>	
 		   
 		    <td>
-		    	<button class="btn btn-primary"> <i class="fa fa-save"></i></button>
-		    	<button (click)="borrarUsuario(usuario)"class="btn btn-danger"> <i class="fa fa-trash-o"></i></button>
+		    	<!-- <button class="btn btn-primary"> <i class="fa fa-save"></i></button> -->
+		    	<button (click)="borrarUsuario(usuario)"class="btn btn-danger"><i class="fas fa-trash"></i></button>
 		    </td>
 		    </tr>
 		  

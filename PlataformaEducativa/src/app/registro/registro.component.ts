@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsuarioService } from '../servicios/usuario/usuario.service';
 import { Usuario } from '../models/usuario.model';
 
-import * as swal from 'sweetalert';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -68,6 +68,7 @@ registrarUsuario(){
  this._usuarioService.crearUsuario(usuario)
    .subscribe(resp =>{
      console.log(resp);
+     this.cargarUsuarios();
    });
 }
 
@@ -81,12 +82,27 @@ cargarUsuarios(){
 }
 
 borrarUsuario(usuario: Usuario){
-  console.log(usuario);
-  this._usuarioService.borrarUsuario(usuario._id)
-  .subscribe(resp => {
-     console.log(resp);
-     this.cargarUsuarios();
-  });
+
+  swal({
+      title: '¿Estas Seguro?',
+      text: "No podras revertir esto!",
+      type: 'warning',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Borrar!',
+    }).then(borrar => {
+      
+      if (borrar.value) {
+        this._usuarioService.borrarUsuario(usuario._id)
+        .subscribe(borrado => {
+         console.log(borrado);
+         this.cargarUsuarios();
+      });
+      }
+    })
+  
 }
 
 }
