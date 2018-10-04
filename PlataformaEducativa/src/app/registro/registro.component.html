@@ -78,9 +78,9 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr *ngFor="let usuario of usuarios">
+		    <tr *ngFor="let usuario of usuarios; let myIndex = index">
 		    <td>
-		    	{{totalRegistros}}
+		    	{{myIndex + 1}}
 		    </td>
 		    <td>
 		    	{{usuario.nombre}}
