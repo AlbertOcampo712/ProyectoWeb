@@ -17,6 +17,8 @@ export class RegistroComponent implements OnInit {
   totalRegistros: number = 0;
   desde: number = 0;
 	forma: FormGroup;
+  cargando: boolean = true;
+
   constructor(public _usuarioService: UsuarioService) { }
 
 // sonIguales(campo1:string, campo2:string){
@@ -39,7 +41,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
       // init_plugins();
-        this.cargarUsuarios();
+        
   	this.forma = new FormGroup({
   		nombre: new FormControl(null, Validators.required),
   		apellido: new FormControl(null, Validators.required),
@@ -48,7 +50,7 @@ export class RegistroComponent implements OnInit {
   		password: new FormControl(null, Validators.required),
   		rol: new FormControl(null, Validators.required),
   	});
-
+    this.cargarUsuarios();
   }
 
 registrarUsuario(){
@@ -70,7 +72,13 @@ registrarUsuario(){
      console.log(resp);
      this.cargarUsuarios();
    });
+
+   if (this.forma.valid) {
+     this.forma.reset();
+   }
 }
+
+
 
 
 cargarUsuarios(){
@@ -78,6 +86,7 @@ cargarUsuarios(){
     .subscribe( (resp: any) =>{
         this.totalRegistros = resp.total;
         this.usuarios = resp.usuarios;
+        this.cargando = false;
     });
 }
 
@@ -104,5 +113,18 @@ borrarUsuario(usuario: Usuario){
     })
   
 }
+
+buscarUsuario(termino: string){
+   
+    if (termino.length <= 0) {
+        this.cargarUsuarios();
+        return;
+    }
+    this._usuarioService.buscarUsuarios(termino)
+      .subscribe((usuarios: Usuario[]) => {
+        this.usuarios = usuarios;
+      });
+}
+
 
 }
