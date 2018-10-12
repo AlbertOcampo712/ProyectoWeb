@@ -8,14 +8,6 @@ body {
     background: #fafafa;
 }
 
-p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
-}
-
 a,
 a:hover,
 a:focus {
@@ -24,27 +16,6 @@ a:focus {
     transition: all 0.3s;
 }
 
-.navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
-}
-
-.line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
-}
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -57,7 +28,7 @@ a:focus {
     left: -250px;
     height: 100vh;
     z-index: 999;
-    background: #7386D5;
+    background: #222831;
     color: #fff;
     transition: all 0.3s;
     overflow-y: scroll;
@@ -73,7 +44,7 @@ a:focus {
     height: 35px;
     line-height: 35px;
     text-align: center;
-    background: #7386D5;
+    background: #222831;
     position: absolute;
     top: 10px;
     right: 10px;
@@ -84,8 +55,8 @@ a:focus {
 }
 
 #dismiss:hover {
-    background: #fff;
-    color: #7386D5;
+    background: #393e46;
+    
 }
 
 .overlay {
@@ -101,11 +72,6 @@ a:focus {
 .overlay.active {
     display: block;
     opacity: 0.4;
-}
-
-#sidebar .sidebar-header {
-    padding: 20px;
-    background: #6d7fcc;
 }
 
 #sidebar ul.components {
@@ -125,14 +91,14 @@ a:focus {
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: #929aab;
+    background: #393e46;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: #393e46;
 }
 
 a[data-toggle="collapse"] {
@@ -150,44 +116,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
-}
-
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
-a.download {
-    background: #fff;
-    color: #7386D5;
-}
-
-a.article,
-a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
-}
-
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
-#content {
-    width: 100%;
-    padding: 20px;
-    min-height: 100vh;
-    transition: all 0.3s;
-    position: absolute;
-    top: 0;
-    right: 0;
+    background: #393e46;
 }
 
 /* ---------------------------------------------------
@@ -217,10 +146,13 @@ a.article:hover {
     SCROLL
 ----------------------------------------------------- */
 
-.sidebar::-webkit-scrollbar{
-    width: 7px;
+::-webkit-scrollbar
+{
+    width: 3px;
+    background-color: #222831;
 }
 
-.sidebar::-webkit-scrollbar-thumb{
-    background: #ff9d00;
+::-webkit-scrollbar-thumb
+{
+    background-color: #929aab;
 }

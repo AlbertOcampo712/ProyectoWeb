@@ -24,18 +24,22 @@ export class LoginComponent implements OnInit {
 
   		let usuario = new Usuario(null, null, null, forma.value.user, forma.value.password, forma.value.rol);
   		
-       if (forma.value.rol == 'Administrador') {
-          this._usuarioService.login(usuario)
-      .subscribe(correcto =>this.router.navigate(['/pagina-principal']));
-        } 
-        if (forma.value.rol == 'Estudiante') {
-          this._usuarioService.login(usuario)
-      .subscribe(correcto =>this.router.navigate(['/estudiantes']));
-        }
-        if (forma.value.rol == 'Docente') {
-          this._usuarioService.login(usuario)
-      .subscribe(correcto =>this.router.navigate(['/docentes']));
-        }
+        this._usuarioService.login(usuario)
+            .subscribe(correcto =>this.router.navigate(['/home/inicio']));
+
+            console.log(forma.value);
+      //  if (forma.value.rol == 'Administrador') {
+      //     this._usuarioService.login(usuario)
+      // .subscribe(correcto =>this.router.navigate(['/home']));
+      //   } 
+      //   if (forma.value.rol == 'Estudiante') {
+      //     this._usuarioService.login(usuario)
+      // .subscribe(correcto =>this.router.navigate(['/home']));
+      //   }
+      //   if (forma.value.rol == 'Docente') {
+      //     this._usuarioService.login(usuario)
+      // .subscribe(correcto =>this.router.navigate(['/home']));
+      //   }
       
   }
 

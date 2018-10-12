@@ -3,59 +3,52 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
+import { APP_ROUTING } from './app.routing';
+
+
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UsuarioService } from './servicios/usuario/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { EstudiantesComponent } from './usuarios/estudiantes/estudiantes.component';
-import { DocentesComponent } from './usuarios/docentes/docentes.component';
-import { AdminComponent } from './usuarios/admin/admin.component';
 import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
 import { PaginaPrincipalComponent } from './pagina-principal/pagina-principal.component';
-import { ProgramacionComponent } from './semestres/primer/programacion/programacion.component';
+
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { HeaderComponent } from './header/header.component';
+import { CalculoComponent } from './semestres/primer/calculo.component';
+import { AlgebraComponent } from './semestres/primer/algebra.component';
+import { FundamentoComponent } from './semestres/primer/fundamento.component';
+import { InglesComponent } from './semestres/primer/ingles.component';
+import { ContableComponent } from './semestres/primer/contable.component';
+import { PrograComponent } from './semestres/primer/progra.component';
+import { InicioComponent } from './pagina-principal/inicio.component';
 
-const routes: Routes = [
-  
-  { path: 'pagina-principal', component:  PaginaPrincipalComponent,
-  children:[
-        { path: 'programacion', component:  ProgramacionComponent},
-        { path: 'registro', component:  RegistroComponent},
-        { path: '**', redirectTo: '/pagina-principal', pathMatch: 'full' }
-        ]
-    },
-    {path: 'programacion', component:  ProgramacionComponent},
-{ path: 'login', component:  LoginComponent},
-  { path: 'registro', component:  RegistroComponent},
-  { path: 'estudiantes', component:  EstudiantesComponent},
-  { path: 'docentes', component:  DocentesComponent},
-  { path: 'admin', component:  AdminComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/login', pathMatch: 'full' }
-];
+
 @NgModule({
   declarations: [
     AppComponent,
-    EstudiantesComponent,
-    DocentesComponent,
-    AdminComponent,
     MenuSidebarComponent,
     PaginaPrincipalComponent,
-    ProgramacionComponent,
     LoginComponent,
     RegistroComponent,
-    HeaderComponent
+    HeaderComponent,
+    CalculoComponent,
+    AlgebraComponent,
+    FundamentoComponent,
+    InglesComponent,
+    ContableComponent,
+    PrograComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    APP_ROUTING
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]
