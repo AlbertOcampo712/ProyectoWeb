@@ -7,8 +7,7 @@ declare var $: any;
   styleUrls: ['./menu-sidebar.component.css']
 })
 export class MenuSidebarComponent implements OnInit {
-  constructor() { }
-
+  constructor() {}
   ngOnInit( ) {
   	$(document).ready(function () {
             $('#dismiss, .overlay').on('click', function () {

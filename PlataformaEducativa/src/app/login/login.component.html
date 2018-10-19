@@ -6,13 +6,12 @@
         <input [ngModel]="user" name="user" type="text" required placeholder="Usuario">
         <!-- PASSWORD INPUT -->
         <input ngModel name="password" type="password"  required placeholder="Contraseña">
-        <!-- <input ngModel name="rol" type="text"  required placeholder="Rol"> -->
-        <select ngModel name="rol" required>
-        <option>Estudiante</option>
-        <option>Docente</option>
-        <option >Administrador</option>
-      </select>
-
+        <div class="form-group row">
+          <div class="col-12">
+            <input [(ngModel)]="recuerdame" name="recuerdame" type="checkbox" id="checkbox-signup">
+            <label for="checkbox-signup">Recuérdame</label>  
+          </div>
+        </div>
         <button type="submit" class="btn btn-primary">INGRESAR</button> 
       </form>
     </div>

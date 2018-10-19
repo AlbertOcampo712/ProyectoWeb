@@ -13,7 +13,16 @@ export class LoginComponent implements OnInit {
 
   constructor( public router: Router, public _usuarioService: UsuarioService) { }
 
+    recuerdame: boolean = false;
+    user: string;
+
   ngOnInit() {
+    this.user = localStorage.getItem('user') || '';
+    if (this.user.length > 1) {
+      // code...
+      this.recuerdame = true;
+    }
+
   }
 
   ingresar( forma: NgForm){
@@ -22,12 +31,10 @@ export class LoginComponent implements OnInit {
   			return;
   		}
 
-  		let usuario = new Usuario(null, null, null, forma.value.user, forma.value.password, forma.value.rol);
+  		let usuario = new Usuario(null, null, null, forma.value.user, forma.value.password, null);
   		
-        this._usuarioService.login(usuario)
+        this._usuarioService.login(usuario, forma.value.recuerdame)
             .subscribe(correcto =>this.router.navigate(['/home/inicio']));
-
-            console.log(forma.value);
       //  if (forma.value.rol == 'Administrador') {
       //     this._usuarioService.login(usuario)
       // .subscribe(correcto =>this.router.navigate(['/home']));

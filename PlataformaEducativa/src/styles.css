@@ -17,4 +17,10 @@ scrollbar-track-color:#E5E5E5;
 
 scrollbar-drakshadow-color:#000000;
 
+
+background-color: #f2f3ee;
+}
+
+.pointer{
+	cursor: pointer;
 }

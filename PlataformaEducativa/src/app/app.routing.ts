@@ -8,6 +8,11 @@ import { HeaderComponent } from './header/header.component';
 import { InicioComponent } from './pagina-principal/inicio.component';
 
 // -----------------------------------------
+// Guards
+// -----------------------------------------
+import  { LoginGuardGuard } from './servicios/guards/login-guard.guard';
+
+// -----------------------------------------
 // PRIMER SEMESTRE
 // -----------------------------------------
 import { CalculoComponent } from './semestres/primer/calculo.component';
@@ -22,6 +27,7 @@ import { PrograComponent } from './semestres/primer/progra.component';
 const APP_ROUTES: Routes = [
   
   { path: 'home', component:  PaginaPrincipalComponent,
+  canActivate: [ LoginGuardGuard ],
   children:[
         { path: 'inicio', component:  InicioComponent},
         { path: 'registro', component:  RegistroComponent},

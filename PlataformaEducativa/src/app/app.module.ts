@@ -8,6 +8,7 @@ import { APP_ROUTING } from './app.routing';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UsuarioService } from './servicios/usuario/usuario.service';
+import { LoginGuardGuard } from './servicios/guards/login-guard.guard';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -25,6 +26,7 @@ import { InglesComponent } from './semestres/primer/ingles.component';
 import { ContableComponent } from './semestres/primer/contable.component';
 import { PrograComponent } from './semestres/primer/progra.component';
 import { InicioComponent } from './pagina-principal/inicio.component';
+import { EstudianteComponent } from './header/estudiante.component';
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { InicioComponent } from './pagina-principal/inicio.component';
     InglesComponent,
     ContableComponent,
     PrograComponent,
-    InicioComponent
+    InicioComponent,
+    EstudianteComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { InicioComponent } from './pagina-principal/inicio.component';
     HttpClientModule,
     APP_ROUTING
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService, LoginGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

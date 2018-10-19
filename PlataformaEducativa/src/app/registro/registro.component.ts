@@ -91,7 +91,14 @@ cargarUsuarios(){
 }
 
 borrarUsuario(usuario: Usuario){
-
+if (usuario.rol == 'Administrador') {
+    swal({
+        type: 'error',
+        title: 'Error',
+        text: 'No es posible borrar a un Administrador'
+      })
+}
+else{
   swal({
       title: '¿Estas Seguro?',
       text: "No podras revertir esto!",
@@ -111,6 +118,7 @@ borrarUsuario(usuario: Usuario){
       });
       }
     })
+}
   
 }
 
