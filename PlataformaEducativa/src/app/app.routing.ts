@@ -10,8 +10,8 @@ import { InicioComponent } from './pagina-principal/inicio.component';
 // -----------------------------------------
 // Guards
 // -----------------------------------------
-import  { LoginGuardGuard } from './servicios/guards/login-guard.guard';
-
+import { LoginGuardGuard } from './servicios/guards/login-guard.guard';
+import { AdminGuard } from './servicios/guards/admin.guard';
 // -----------------------------------------
 // PRIMER SEMESTRE
 // -----------------------------------------
@@ -30,7 +30,7 @@ const APP_ROUTES: Routes = [
   canActivate: [ LoginGuardGuard ],
   children:[
         { path: 'inicio', component:  InicioComponent},
-        { path: 'registro', component:  RegistroComponent},
+        { path: 'registro',  canActivate: [AdminGuard], component:  RegistroComponent},
         { path: 'calculo', component:  CalculoComponent},
         { path: 'algebra', component:  AlgebraComponent},
         { path: 'fundamento', component:  FundamentoComponent},

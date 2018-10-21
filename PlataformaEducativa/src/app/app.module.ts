@@ -5,10 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { APP_ROUTING } from './app.routing';
 
+//Guards
+import { LoginGuardGuard } from './servicios/guards/login-guard.guard';
+import { AdminGuard } from './servicios/guards/admin.guard';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UsuarioService } from './servicios/usuario/usuario.service';
-import { LoginGuardGuard } from './servicios/guards/login-guard.guard';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -53,7 +55,7 @@ import { EstudianteComponent } from './header/estudiante.component';
     HttpClientModule,
     APP_ROUTING
   ],
-  providers: [UsuarioService, LoginGuardGuard],
+  providers: [UsuarioService, LoginGuardGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
