@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
+import { ItemSubir } from '../../models/subir.model';
 import { HttpClient} from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { SubirArchivoService } from '../subirArchivo/subir-archivo.service';
+import { SubirArchivoComponent } from '../../subir-archivo/subir-archivo.component';
+
 
 
 @Injectable({
@@ -17,7 +21,10 @@ export class UsuarioService {
 		token: string;
 		header: any = [];
 
-	constructor(public http: HttpClient, public router: Router) { 
+	constructor(
+		public http: HttpClient, 
+		public router: Router,
+		public _subirArchivoService: SubirArchivoService) { 
 		this.cargarStorage();
 	}
 
@@ -116,5 +123,15 @@ buscarUsuarios(termino: string){
 				.pipe(map((resp: any ) => resp.usuarios ));
 		}
 
+
+// cambiarImagen(archivo: File){
+// 	this._subirArchivoService.subirArchivo(archivo, 'Primer semestre')
+// 	.then(resp =>{
+// 		console.log(resp);
+// 	})
+// 	.catch(resp=>{
+// 		console.log(resp);
+// 	})
+// }
 
 }

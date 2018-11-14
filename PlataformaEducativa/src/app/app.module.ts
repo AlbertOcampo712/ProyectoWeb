@@ -10,9 +10,10 @@ import { LoginGuardGuard } from './servicios/guards/login-guard.guard';
 import { AdminGuard } from './servicios/guards/admin.guard';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { UsuarioService } from './servicios/usuario/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { UsuarioService } from './servicios/usuario/usuario.service';
+import { SubirArchivoService} from './servicios/subirArchivo/subir-archivo.service';
 
 import { AppComponent } from './app.component';
 import { MenuSidebarComponent } from './menu-sidebar/menu-sidebar.component';
@@ -28,7 +29,7 @@ import { InglesComponent } from './semestres/primer/ingles.component';
 import { ContableComponent } from './semestres/primer/contable.component';
 import { PrograComponent } from './semestres/primer/progra.component';
 import { InicioComponent } from './pagina-principal/inicio.component';
-import { EstudianteComponent } from './header/estudiante.component';
+import { SubirArchivoComponent } from './subir-archivo/subir-archivo.component';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import { EstudianteComponent } from './header/estudiante.component';
     ContableComponent,
     PrograComponent,
     InicioComponent,
-    EstudianteComponent
+    SubirArchivoComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +56,7 @@ import { EstudianteComponent } from './header/estudiante.component';
     HttpClientModule,
     APP_ROUTING
   ],
-  providers: [UsuarioService, LoginGuardGuard, AdminGuard],
+  providers: [UsuarioService, LoginGuardGuard, AdminGuard,SubirArchivoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

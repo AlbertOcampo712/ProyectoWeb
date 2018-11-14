@@ -58,7 +58,7 @@ a:focus {
     
 }
 
-.overlay {
+/*.overlay {
     display: none;
     position: fixed;
     width: 100vw;
@@ -71,7 +71,7 @@ a:focus {
 .overlay.active {
     display: block;
     opacity: 0.4;
-}
+}*/
 
 #sidebar ul.components {
     padding: 20px 0;

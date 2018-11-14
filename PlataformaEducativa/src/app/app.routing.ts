@@ -12,6 +12,7 @@ import { InicioComponent } from './pagina-principal/inicio.component';
 // -----------------------------------------
 import { LoginGuardGuard } from './servicios/guards/login-guard.guard';
 import { AdminGuard } from './servicios/guards/admin.guard';
+import { SubirGuard } from './servicios/guards/subir.guard';
 // -----------------------------------------
 // PRIMER SEMESTRE
 // -----------------------------------------
@@ -21,6 +22,7 @@ import { FundamentoComponent } from './semestres/primer/fundamento.component';
 import { InglesComponent } from './semestres/primer/ingles.component';
 import { ContableComponent } from './semestres/primer/contable.component';
 import { PrograComponent } from './semestres/primer/progra.component';
+import { SubirArchivoComponent } from './subir-archivo/subir-archivo.component';
 
 
 
@@ -31,6 +33,7 @@ const APP_ROUTES: Routes = [
   children:[
         { path: 'inicio', component:  InicioComponent},
         { path: 'registro',  canActivate: [AdminGuard], component:  RegistroComponent},
+        { path: 'subir',  canActivate: [SubirGuard], component:  SubirArchivoComponent},
         { path: 'calculo', component:  CalculoComponent},
         { path: 'algebra', component:  AlgebraComponent},
         { path: 'fundamento', component:  FundamentoComponent},
