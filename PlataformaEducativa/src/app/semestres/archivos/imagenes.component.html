@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Archivos</h2>
+    <p>{{archivos.length}} archivos subidos</p>
+    <ul>
+      <li *ngFor="let archivo of archivos" >
+        <img src="{{url+archivo.semestre+'/'+archivo.materia+'/'+archivo.nombre}}"/>
+        <video  controls src="{{url+archivo.semestre+'/'+archivo.materia+'/'+archivo.nombre}}" style="width: 40%">
+        </video>
+          <video>
+            <source controls src="{{url+archivo.semestre+'/'+archivo.materia+'/'+archivo.nombre}}">
+          </video>
+        <h2>{{archivo.titulo}}</h2>
+        <h3>{{archivo.descripcion}}</h3>
+        <p>{{archivo.materia}}</p>
+        <p>{{archivo.semestre}}</p>
+      </li>
+    </ul>
+  </div>

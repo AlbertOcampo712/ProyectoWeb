@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
+import { LightboxModule } from 'ngx-lightbox';
 
 import { APP_ROUTING } from './app.routing';
 
@@ -54,7 +54,8 @@ import { SubirArchivoComponent } from './subir-archivo/subir-archivo.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    APP_ROUTING
+    APP_ROUTING,
+    LightboxModule
   ],
   providers: [UsuarioService, LoginGuardGuard, AdminGuard,SubirArchivoService],
   bootstrap: [AppComponent]

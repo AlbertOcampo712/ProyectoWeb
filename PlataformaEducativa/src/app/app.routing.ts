@@ -25,7 +25,6 @@ import { PrograComponent } from './semestres/primer/progra.component';
 import { SubirArchivoComponent } from './subir-archivo/subir-archivo.component';
 
 
-
 const APP_ROUTES: Routes = [
   
   { path: 'home', component:  PaginaPrincipalComponent,

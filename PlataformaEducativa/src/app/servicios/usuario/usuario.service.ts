@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
-import { ItemSubir } from '../../models/subir.model';
+
 import { HttpClient} from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { SubirArchivoService } from '../subirArchivo/subir-archivo.service';
-import { SubirArchivoComponent } from '../../subir-archivo/subir-archivo.component';
 
 
 
@@ -16,6 +14,8 @@ import { SubirArchivoComponent } from '../../subir-archivo/subir-archivo.compone
 	providedIn: 'root'
 })
 export class UsuarioService {
+
+
 	
 		usuario: Usuario;
 		token: string;
@@ -23,8 +23,7 @@ export class UsuarioService {
 
 	constructor(
 		public http: HttpClient, 
-		public router: Router,
-		public _subirArchivoService: SubirArchivoService) { 
+		public router: Router) { 
 		this.cargarStorage();
 	}
 
@@ -99,39 +98,40 @@ export class UsuarioService {
 		}));
 	}
 
-cargarUsuarios(desde: number = 0){
-		let url = URL_SERVICIOS + '/usuario?desde=' + desde;
-		return this.http.get( url );
-}
+	cargarUsuarios(desde: number = 0){
+			let url = URL_SERVICIOS + '/usuario?desde=' + desde;
+			return this.http.get( url );
+	}
 
-borrarUsuario(id:string){
-	let url = URL_SERVICIOS + "/usuario/" + id;
-	return this.http.delete( url )
-	.pipe(map((resp: any ) =>{
-					swal(
-					'Borrado!',
-					'El usuario ha sido borrado corractamente',
-					'success'
-				)
-				return true;
-			}));
-}
+	borrarUsuario(id:string){
+		let url = URL_SERVICIOS + "/usuario/" + id;
+		return this.http.delete( url )
+		.pipe(map((resp: any ) =>{
+						swal(
+						'Borrado!',
+						'El usuario ha sido borrado corractamente',
+						'success'
+					)
+					return true;
+				}));
+	}
 
-buscarUsuarios(termino: string){
-		let url = URL_SERVICIOS + '/busqueda/todo/'+termino;
-		return this.http.get( url )
-				.pipe(map((resp: any ) => resp.usuarios ));
-		}
+	// actualizarUsuario( usuario: Usuario){
+	// 	this.usuario = usuario;
+	// 	let url = URL_SERVICIOS + "/usuario/" + usuario._id;
+	// 	return this.http.put(url, usuario)
+	// 	.pipe(map((resp: any)=>{
+			
+	// 			let usuarioDB: Usuario = resp.usuario;
+				
 
+	// 	}));
+	// }
 
-// cambiarImagen(archivo: File){
-// 	this._subirArchivoService.subirArchivo(archivo, 'Primer semestre')
-// 	.then(resp =>{
-// 		console.log(resp);
-// 	})
-// 	.catch(resp=>{
-// 		console.log(resp);
-// 	})
-// }
+	buscarUsuarios(termino: string){
+			let url = URL_SERVICIOS + '/busqueda/todo/'+termino;
+			return this.http.get( url )
+					.pipe(map((resp: any ) => resp.usuarios ));
+			}
 
-}
+	}

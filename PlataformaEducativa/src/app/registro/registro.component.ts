@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsuarioService } from '../servicios/usuario/usuario.service';
 import { Usuario } from '../models/usuario.model';
+import { URL_SERVICIOS } from '../config/config';
+import { map, catchError } from 'rxjs/operators';
+import { HttpClient} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 
 import swal from 'sweetalert2';
 
@@ -18,30 +22,15 @@ export class RegistroComponent implements OnInit {
   desde: number = 0;
 	forma: FormGroup;
   cargando: boolean = true;
+  public usuario: Usuario;
 
-  constructor(public _usuarioService: UsuarioService) { }
+  constructor(public _usuarioService: UsuarioService,public http: HttpClient) { 
+      this.usuario = new Usuario("","","","","","");
+    }
 
-// sonIguales(campo1:string, campo2:string){
-
-//     return ( group:FormGroup)=>{
-      
-//       let pass1 = group.controls[campo1].value;
-//       let pass2 = group.controls[campo2].value;
-
-//       if( pass1 === pass2){
-//         return null;
-//       }
-
-//       return{
-//         sonIguales: true
-//       }; 
-//     }
-
-//   }
 
   ngOnInit() {
-      // init_plugins();
-        
+ 
   	this.forma = new FormGroup({
   		nombre: new FormControl(null, Validators.required),
   		apellido: new FormControl(null, Validators.required),
@@ -57,6 +46,7 @@ registrarUsuario(){
    if(this.forma.invalid){
     return;
   }
+
 	let usuario = new Usuario(
    this.forma.value.nombre,
    this.forma.value.apellido,
@@ -121,6 +111,33 @@ else{
 }
   
 }
+
+
+
+
+
+ActualizarUsuario(usuario: Usuario){
+   let url = URL_SERVICIOS + "/usuario/" + this.usuario._id;
+    return this.http.put(url, usuario)
+
+}
+putUsuario(usuario:Usuario){
+  this.ActualizarUsuario(usuario)
+  .subscribe(resp =>{
+    console.log(resp);
+  })
+}
+
+
+actualizarUsuario(){
+  this.ActualizarUsuario(this.usuario);
+}
+abrirModal(usuario: Usuario){
+  this._usuarioService.usuario = usuario;
+  console.log(this._usuarioService.usuario._id);
+}
+
+
 
 buscarUsuario(termino: string){
    

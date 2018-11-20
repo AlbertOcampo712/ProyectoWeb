@@ -1,8 +1,7 @@
 <div class="container mt-4">
 	<div class="col-7">
-       	<form #formSubir="ngForm" (ngSubmit)="nuevoSubir()">
+       	<form>
 			<div class="form-group">
-				<!-- <input type="text" name="semestre" #semestre ="ngModel" class="form-control" [(ngModel)]="itemSubir.semestre" > -->
 			    <label for="texto">Seleccione un semestre</label>
 			     <select name="semestre" #semestre ="ngModel" class="form-control" [(ngModel)]="itemSubir.semestre" (change)="cambiar()" id="texto">
 			     	<option>Seleccione un semestre...</option>
@@ -14,8 +13,9 @@
 			    <select  class="form-control" #materia ="ngModel" [(ngModel)]="itemSubir.materia" name="materia">
    					<option *ngFor="let mat of materias" [value]="mat">{{mat}}</option>
 				</select>
-				<!-- <input type="text" name="materia" #materia ="ngModel" class="form-control" [(ngModel)]="itemSubir.materia" > -->
-
+			<div class="form-group">
+				<input type="text" class="form-control" #titulo ="ngModel" [(ngModel)]="itemSubir.titulo" name="titulo">
+			</div>
 		  	</div>
 		  	<div class="form-group">
 			    <label for="exampleFormControlTextarea1">Descripción</label>

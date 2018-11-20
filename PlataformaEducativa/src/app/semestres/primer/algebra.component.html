@@ -5,6 +5,8 @@
   </button>
   <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+        <button class="btn btn-outline-danger" (click)="cargarVideos()">Videos</button>
+        <button class="btn btn-outline-danger" (click)="cargarImagenes()">Imagenes</button>
         <a class="nav-item nav-link" href="#">Videos</a>
         <a class="nav-item nav-link" href="#">Documentos</a>
         <a class="nav-item nav-link" href="#">Imagenes</a>
@@ -12,3 +14,45 @@
     </div>
   </div>
 </nav>
+
+
+<div class="container ">
+    <h2 >Archivos</h2>
+    <p>{{archivos.length}} archivos subidos</p>
+  <div class="row">
+    <!-- IMAGENES -->
+    
+      <div class="col-lg-4 card-columns  d.flex" *ngFor="let archivo of archivos; let myIndex = index">
+        <div class=" imagen card text-center  flex-row" >
+          <a href="#" data-toggle="modal" [attr.data-target]="'#noce'+myIndex">
+                  <img class="producto_image"  src="{{url+archivo.semestre+'/'+archivo.materia+'/'+archivo.nombre}}"   width="320px" height="250px" *ngIf="archivo.tipoImagen"/>
+          
+              <video controls src="{{url+archivo.semestre+'/'+archivo.materia+'/'+archivo.nombre}}" width="317px" height="250px" *ngIf="archivo.tipoVideo">
+            
+          </video>
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">{{archivo.titulo}}</h5>
+            <p class="card-text">{{archivo.descripcion}}</p>
+          </div>
+        </div>
+
+   <div class="modal fade" [id]="'noce'+myIndex" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
+                <div class="modal-dialog modal-lg modal-dialog-centered"  role="document">
+
+                  <img src="{{url+archivo.semestre+'/'+archivo.materia+'/'+archivo.nombre}}" *ngIf="archivo.tipoImagen"  class="img-fluid rounded" />
+                  <video  src="{{url+archivo.semestre+'/'+archivo.materia+'/'+archivo.nombre}}" *ngIf="archivo.tipoVideo"></video>
+                  
+                </div>
+        </div>
+     </div>   
+</div>
+
+
+
+

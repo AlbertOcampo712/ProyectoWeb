@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators, NgForm} from '@angular
 import { UsuarioService } from '../servicios/usuario/usuario.service';
 import { SubirArchivoService } from '../servicios/subirArchivo/subir-archivo.service';
 import { Usuario } from '../models/usuario.model';
-import { ItemSubir } from '../models/subir.model';
+import { ItemSubir } from '../models/itemSubir.model';
 import { URL_SERVICIOS } from '../config/config';
 import { HttpClient} from '@angular/common/http';
 
@@ -22,21 +22,17 @@ export class SubirArchivoComponent implements OnInit  {
 	usuario: Usuario;
 
 	public itemSubir: ItemSubir;
+	public tipo;
 
 	constructor(public _usuarioService: UsuarioService, public _subirArchivoService: SubirArchivoService){
-		this.itemSubir = new ItemSubir("","","","");
+		this.itemSubir = new ItemSubir("","","","","","");
 	}
 
 	ngOnInit(){
-		this.forma = new FormGroup({
-			semestre: new FormControl(null, Validators.required),
-			materia: new FormControl(null, Validators.required),
-			descripcion: new FormControl(null, Validators.required),
-			archivo: new FormControl(null, Validators.required)});
 	}
 
 // subirimgenslide
-  subirArchivo(archivo: File, semestre:string, ){
+  subirArchivo(archivo: File, semestre: string, materia: string){
   	return new Promise ((resolve, reject)=>{
 
 	  	let formData = new FormData();
@@ -45,14 +41,16 @@ export class SubirArchivoComponent implements OnInit  {
 
 	  	formData.append('semestre', this.itemSubir.semestre);
 	  	formData.append('materia', this.itemSubir.materia);
+	  	formData.append('titulo', this.itemSubir.titulo);
 	  	formData.append('descripcion', this.itemSubir.descripcion);
-	  	
+	  	formData.append('tipoVideo', this.imagenSubir.type);
+	  	formData.append('tipoImagen', this.imagenSubir.type);
 
-	  	formData.append('archivo', archivo, archivo.name);
+	  	formData.append('nombre', archivo, archivo.name);
 	  	xhr.onreadystatechange = function(){
 	  		if (xhr.readyState === 4) {
 	  			if (xhr.status ===200) {
-	  				console.log('Imagen subida');
+	  				console.log('Archivo subido');
 	  				console.log(archivo);
 	  				resolve( JSON.parse( xhr.response ) );
 	  				}else{
@@ -61,7 +59,7 @@ export class SubirArchivoComponent implements OnInit  {
 	  				}
 	  			}
 	  		};
-  			let url = URL_SERVICIOS + '/upload/'+semestre;
+  			let url = URL_SERVICIOS + '/upload/'+semestre+'/'+materia;
 
   			xhr.open('POST', url, true);
   			xhr.send( formData );
@@ -71,7 +69,7 @@ export class SubirArchivoComponent implements OnInit  {
 
 
 CambiarImagen(archivo: File){
-	this.subirArchivo(archivo, this.itemSubir.semestre)
+	this.subirArchivo(archivo, this.itemSubir.semestre, this.itemSubir.materia)
 	.then(resp =>{
 		console.log(resp);
 	})
@@ -89,11 +87,11 @@ CambiarImagen(archivo: File){
 		}
 		this.imagenSubir = archivo;
 
-	}
+
+		console.log(this.imagenSubir);
+		console.log(this.imagenSubir.type);
 
 
-	nuevoSubir(){
-		console.log(this.itemSubir);
 	}
 
 	cambiarImagen(){
